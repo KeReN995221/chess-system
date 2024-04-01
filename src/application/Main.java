@@ -20,16 +20,21 @@ public class Main {
         while(true){
             try {
                 UI.clearScreen();
-                UI.printBoard(chessMatch.getPieces());
+                UI.printMatch(chessMatch);
                 System.out.println();
-                System.out.println("Source: ");
+                System.out.print("Source: ");
                 CheesPosition source = UI.readChessPosiiton(keyboard);
 
+                boolean[][] posibleMoves = chessMatch.possibleMoves(source);
+                UI.clearScreen();
+                UI.printBoard(chessMatch.getPieces(), posibleMoves);
+
                 System.out.println();
-                System.out.println("Target: ");
+                System.out.print("Target: ");
                 CheesPosition target = UI.readChessPosiiton(keyboard);
 
                 ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+
             }catch (CheesExeption e){
                 System.out.println(e.getMessage());
                 keyboard.nextLine();
