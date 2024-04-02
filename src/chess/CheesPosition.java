@@ -27,7 +27,7 @@ public class CheesPosition {
     }
 
     protected static  CheesPosition fromPosition(Position position){
-        return new CheesPosition((char)('a' - position.getColum()) , 8 - position.getRow());
+        return new CheesPosition((char)('a' + position.getColum()) , 8 - position.getRow());
 
     }
 

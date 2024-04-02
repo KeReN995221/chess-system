@@ -20,8 +20,8 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         List<ChessPiece> captured = new ArrayList<>();
 
-        while(true){
-            try {
+        while(!chessMatch.getCheckMate()){
+           try {
                 UI.clearScreen();
                 UI.printMatch(chessMatch, captured);
                 System.out.println();
@@ -41,13 +41,15 @@ public class Main {
                 if(capturedPiece != null){
                     captured.add(capturedPiece);
                 }
-            }catch (CheesExeption e){
+           }catch (CheesExeption e){
                 System.out.println(e.getMessage());
                 keyboard.nextLine();
-            }catch (InputMismatchException e){
+           }catch (InputMismatchException e){
                 System.out.println(e.getMessage());
                 keyboard.nextLine();
-            }
+           }
         }
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);
     }
 }
